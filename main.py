@@ -13,14 +13,14 @@ def reset():
     git_update_commit_push()
 
 
-def worker(scholar_id):
+def worker(scholar_id, max_downloads):
     print(scholar_id)
-    download_scholar_papers_by_id(scholar_id, max_downloads=25)
+    download_scholar_papers_by_id(scholar_id, max_downloads=max_downloads)
 
 
-def process_batch(batch, max_workers):
+def process_batch(batch, max_workers, max_downloads):
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = [executor.submit(worker, sid) for sid in batch]
+        futures = [executor.submit(worker, sid, max_downloads) for sid in batch]
         for _ in as_completed(futures):
             pass
 
@@ -62,11 +62,14 @@ def main():
 
     N = 5  # Number of workers after which to reset
     max_workers = N
+    max_max_downloads = 30
 
-    for i in range(0, len(ids), N):
-        reset()
-        batch = ids[i : i + N]
-        process_batch(batch, max_workers)
+
+    for max_downloads in range(20, max_max_downloads+1):
+        for i in range(0, len(ids), N):
+            reset()
+            batch = ids[i : i + N]
+            process_batch(batch, max_workers, max_downloads)
 
 
 if __name__ == "__main__":
