@@ -60,7 +60,7 @@ def main():
 
     ids = list(df["Google Scholar ID"].values)
 
-    N = 12  # Number of workers after which to reset
+    N = 22  # Number of workers after which to reset
     max_workers = N
     max_max_downloads = 30
 

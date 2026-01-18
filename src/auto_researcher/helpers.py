@@ -24,7 +24,7 @@ def connect_nordvpn_uk():
     print("--------------")
     try:
         subprocess.run(["nordvpn", "-c", "-g", "United Kingdom"], check=True)
-        time.sleep(5)  # wait for connection to establish
+        time.sleep(10)  # wait for connection to establish
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Failed to connect: {e}")
 
