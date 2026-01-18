@@ -1,28 +1,20 @@
-# python-template
+# Research Scraper
 
-Simple template for python projects
+## Getting started
 
-Python 3.11 initialised with uv by default with `ruff` and `numpy`
+Add your Google Scholar Authors into `researchers.csv` with columns 
+
+`Name, Google Scholar ID`
+
+Run the scraper
+
+`uv sync`
+
+`uv run main.py`
+
+Analyse the results in `analysis.ipynb`
 
 
-# What is this project
+## Example
 
-Given a list of researchers.
-
-|
-
-V
-
-Scrape N papers from each researcher based on criteria
-
-| 
-
-V 
-
-Create an embedding of each paper based on the contents. This could be from the new BERT paper 
-
-|
-
-V
-
-Visualise the papers on graphs, 2d respresentations or more visuals.
+See the AIMS branch
